@@ -35,7 +35,12 @@ public class RandomUtils
     }
 
     int rand = Random.Range(0, SpriteList.Count);
-    return SpriteList[rand];
+
+    Sprite output = SpriteList[rand];
+
+    SpriteList.RemoveAt(rand);
+
+    return output;
   }
 
   public static Color GenerateColor()

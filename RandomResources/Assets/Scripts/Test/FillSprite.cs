@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FillSprite : MonoBehaviour
 {
-  private SpriteRenderer mySprite;
+  private Image mySprite;
   // Start is called before the first frame update
   void Start()
   {
@@ -22,7 +23,8 @@ public class FillSprite : MonoBehaviour
 
   private void RefreshSprite()
   {
-    if (GetComponent<SpriteRenderer>()) mySprite = GetComponent<SpriteRenderer>();
+    if (GetComponent<Image>()) mySprite = GetComponent<Image>();
     mySprite.sprite = RandomUtils.GenerateImage();
+    mySprite.color = RandomUtils.GenerateColor();
   }
 }
