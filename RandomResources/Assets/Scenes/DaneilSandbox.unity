@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourcePool (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8161948389156667971, guid: f004ed4b05c39044596337f353669bd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe78e08f23b8ea44bafd0f2564309ce5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f004ed4b05c39044596337f353669bd1, type: 3}
 --- !u!1001 &462257077
@@ -315,6 +319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourcePool (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8161948389156667971, guid: f004ed4b05c39044596337f353669bd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe78e08f23b8ea44bafd0f2564309ce5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f004ed4b05c39044596337f353669bd1, type: 3}
 --- !u!1001 &830881146
@@ -412,6 +420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourcePool (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8161948389156667971, guid: f004ed4b05c39044596337f353669bd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe78e08f23b8ea44bafd0f2564309ce5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f004ed4b05c39044596337f353669bd1, type: 3}
 --- !u!1 &1139056392
@@ -575,6 +587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourcePool (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8161948389156667971, guid: f004ed4b05c39044596337f353669bd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe78e08f23b8ea44bafd0f2564309ce5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f004ed4b05c39044596337f353669bd1, type: 3}
 --- !u!1001 &1295093326
@@ -672,6 +688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourcePool
       objectReference: {fileID: 0}
+    - target: {fileID: 8161948389156667971, guid: f004ed4b05c39044596337f353669bd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe78e08f23b8ea44bafd0f2564309ce5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f004ed4b05c39044596337f353669bd1, type: 3}
 --- !u!1 &1934927380
@@ -764,6 +784,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1843323826975341066, guid: 5f80d402abf20b94ea238a61aa8d2e61, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1934927382}
+    - target: {fileID: 1843323826975341066, guid: 5f80d402abf20b94ea238a61aa8d2e61, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1843323827658936884, guid: 5f80d402abf20b94ea238a61aa8d2e61, type: 3}
       propertyPath: m_Name
       value: Player

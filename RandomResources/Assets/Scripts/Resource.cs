@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Shapes;
 
 public class Resource : MonoBehaviour
 {
@@ -13,10 +14,14 @@ public class Resource : MonoBehaviour
   [SerializeField]
   GameObject filledDisplay, emptyDisplay;
 
+  [SerializeField]
+  ShapeRenderer outlineShape, backgroundShape;
+
   // visually sets this to represent this component
   public void SetComponentID(int id)
   {
-    filledDisplay.GetComponentInChildren<Image>().color = ComponentColors[id - 1];
+    outlineShape.Color = ComponentColors[id - 1];
+    backgroundShape.Color = ComponentColors[id - 1] * 0.8f;
   }
 
   public void DisplayEmpty()
