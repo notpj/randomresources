@@ -14,7 +14,7 @@ public class Recipe : MonoBehaviour
   Transform ingredientTransform, resultTransform;
 
   [SerializeField]
-  TextMeshProUGUI usesCounter;
+  TextMeshProUGUI usesCounter, toolName;
 
   List<Resource> resourcesNeeded = new List<Resource>();
 
@@ -54,8 +54,14 @@ public class Recipe : MonoBehaviour
     PlayerController.AwardComponents(productIDGained, productsGiven);
     --uses;
     UpdateResources();
-
+    ActionWallet.UseAction();
     if (uses <= 0) RemoveRecipe();
+  }
+
+  public void DismissRecipe()
+  {
+    ActionWallet.UseAction();
+    RemoveRecipe();
   }
 
   private void RemoveRecipe()
@@ -110,5 +116,7 @@ public class Recipe : MonoBehaviour
     }
 
     UpdateResources();
+
+    toolName.text = Resource.GetName(componentIDRequired) + ' ' + RandomUtils.GenerateMachine();
   }
 }

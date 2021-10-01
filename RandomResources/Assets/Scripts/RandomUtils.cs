@@ -21,6 +21,20 @@ public class RandomUtils
     return output;
   }
 
+  public static string GenerateMachine()
+  {
+    string[] machines = 
+    {
+      "Slicer", "Pounder", "Clumper", "Dicer", "Juicer", "Clipper", "Snipper", "Ripper",
+      "Eater", "Peeler", "Grabber", "Placer", "Dumper", "Thumper", "Jumper", "Mixer",
+      "Chunker", "Fixer", "Dipper", "Spreader", "Duster", "Sucker", "Thrower", "Catcher",
+      "Mincer", "Finder", "Storer", "Pourer", "Gripper", "Tipper", "Folder", "Holder",
+      "Blaster", "Master", "Tool", "Machine", "Box", "Bucket", "Cache", "Chest"
+    };
+
+    return machines[Random.Range(0, machines.Length)];
+  }
+
   public static Sprite GenerateImage()
   {
     if (SpriteList == null)
