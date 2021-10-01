@@ -82,9 +82,9 @@ public class Recipe : MonoBehaviour
     resourcesNeeded.Clear();
     submitButton.SetActive(false);
 
-    uses = Random.Range(5, 15);
+    uses = Random.Range(3, 8);
 
-    componentIDRequired = Random.Range(1, PlayerController.GetComponentQuantity() + 1);
+    componentIDRequired = Random.Range(1, PlayerController.GetComponentQuantity() + 2);
     componentsRequired = Random.Range(2, 3 + 1);
 
     for(int i = 0; i < componentsRequired; ++i)
@@ -94,7 +94,12 @@ public class Recipe : MonoBehaviour
       resourcesNeeded.Add(resource);
     }
 
-    productIDGained = Random.Range(1, PlayerController.GetComponentQuantity() + 1);
+    do
+    {
+      productIDGained = Random.Range(1, PlayerController.GetComponentQuantity() + 2);
+    }
+    while (productIDGained == componentIDRequired);
+
     productsGiven = Random.Range(1, 2 + 1);
 
     for (int i = 0; i < productsGiven; ++i)

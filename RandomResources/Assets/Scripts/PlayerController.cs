@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
   [SerializeField, Tooltip("All of the resource pools that the player has control of are a child of this")]
   GameObject resourcePoolParent = null;
+  [SerializeField]
+  GameObject resourcePoolPrefab = null;
+  [SerializeField]
+  int startingPools = 3;
 
   List<ResourcePool> componentPools = new List<ResourcePool>();
 
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
   static public void AwardComponents(int componentID, int amount)
   {
+    if (componentID - 1 >= Instance.componentPools.Count) Instance.AddResourcePool();
     ResourcePool pool = Instance.componentPools[componentID - 1];
     pool.CreateSome(amount);
   }
@@ -51,22 +56,34 @@ public class PlayerController : MonoBehaviour
 
   private void Start()
   {
-    foreach (Transform t in resourcePoolParent.transform)
+    foreach (Transform T in resourcePoolParent.transform) Destroy(T.gameObject);
+    for(int i = 0; i < startingPools; ++i)
     {
-      ResourcePool pool = t.GetComponent<ResourcePool>();
-      if (!pool)
-      {
-        Debug.LogError("Non resource pool type found in resource pool parent");
-        continue;
-      }
-
-      Resource resource = pool.GetResource();
-      resource.DisplayFilled();
-      
-      componentPools.Add(pool);
+      ResourcePool pool = AddResourcePool();
       pool.CreateSome(Random.Range(2, 6));
-      resource.SetComponentID(++componentCount);
-      pool.UpdateName(componentCount);
     }
+  }
+
+  private ResourcePool AddResourcePool()
+  {
+    ResourcePool pool = Instantiate(resourcePoolPrefab, resourcePoolParent.transform).GetComponent<ResourcePool>();
+    InitializeResourcePool(pool);
+    return pool;
+  }
+
+  private void InitializeResourcePool(ResourcePool pool)
+  {
+    if (!pool)
+    {
+      Debug.LogError("Non resource pool type found in resource pool parent");
+      return;
+    }
+
+    Resource resource = pool.GetResource();
+    resource.DisplayFilled();
+
+    componentPools.Add(pool);
+    resource.SetComponentID(++componentCount);
+    pool.UpdateName(componentCount);
   }
 }

@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourcePoolParent: {fileID: 6070952459282340016}
+  resourcePoolPrefab: {fileID: 6954882200915492461, guid: f004ed4b05c39044596337f353669bd1, type: 3}
+  startingPools: 3
 --- !u!1 &6070952459282340016
 GameObject:
   m_ObjectHideFlags: 0
