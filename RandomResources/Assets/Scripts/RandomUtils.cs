@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RandomUtils
 {
+  static List<Sprite> SpriteList = null;
   public static string GenerateName()
   {
     string output = "";
@@ -22,6 +23,24 @@ public class RandomUtils
       }
     }
 
+    return output;
+  }
+
+  public static Sprite GenerateImage()
+  {
+    if (SpriteList == null)
+    {
+      //Generate the list
+      SpriteList = new List<Sprite>(Resources.LoadAll<Sprite>("Icons"));
+    }
+
+    int rand = Random.Range(0, SpriteList.Count);
+    return SpriteList[rand];
+  }
+
+  public static Color GenerateColor()
+  {
+    Color output = Random.ColorHSV();
     return output;
   }
 
