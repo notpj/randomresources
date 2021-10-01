@@ -22,6 +22,14 @@ public class Resource : MonoBehaviour
   [SerializeField]
   Image icon, unlitIcon;
 
+  static public void ResetResources()
+  {
+    resourceSprites.Clear();
+    resourceNames.Clear();
+    resourceColors.Clear();
+    resourcePrices.Clear();
+  }
+
   // visually sets this to represent this component
   public void SetComponentID(int id)
   {

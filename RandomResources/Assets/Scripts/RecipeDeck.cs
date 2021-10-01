@@ -16,12 +16,27 @@ public class RecipeDeck : MonoBehaviour
 
   private void Start()
   {
-    StartCoroutine(DealCards());
+    FillCards();
+    //StartCoroutine(DealCards());
+  }
+
+  private void OnEnable()
+  {
+    Recipe.Event_RecipeRemoved += FillCards;
+  }
+  private void OnDisable()
+  {
+    Recipe.Event_RecipeRemoved -= FillCards;
   }
 
   private void Update()
   {
     if (Input.GetKeyDown(KeyCode.Space)) CreateCard();
+  }
+
+  private void FillCards()
+  {
+    for (int i = 0; i < maximumCards; ++i) CreateCard();
   }
 
   private void CreateCard()

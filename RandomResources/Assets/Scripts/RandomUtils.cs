@@ -5,6 +5,12 @@ using UnityEngine;
 public class RandomUtils
 {
   static List<Sprite> SpriteList = null;
+  
+  static public void ResetRandom()
+  {
+    SpriteList = null;
+  }
+  
   public static string GenerateName()
   {
     string output = "";
@@ -87,6 +93,7 @@ public class RandomUtils
   public static Color GenerateColor()
   {
     Color output = Random.ColorHSV();
+    output.a = 1.0f;
     return output;
   }
 

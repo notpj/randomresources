@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Recipe : MonoBehaviour
 {
+  public delegate void VoidVoid();
+  static public event VoidVoid Event_RecipeRemoved;
+
   [SerializeField]
   GameObject submitButton;
 
@@ -60,6 +63,11 @@ public class Recipe : MonoBehaviour
 
   public void DismissRecipe()
   {
+    while (componentsConsumed > 0)
+    {
+      PlayerController.AwardComponents(componentIDRequired, 1);
+      --componentsConsumed;
+    }
     ActionWallet.UseAction();
     RemoveRecipe();
   }
@@ -67,6 +75,7 @@ public class Recipe : MonoBehaviour
   private void RemoveRecipe()
   {
     Destroy(gameObject);
+    if (Event_RecipeRemoved != null) Event_RecipeRemoved();
   }
 
   private void UpdateResources()
