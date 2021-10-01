@@ -44,6 +44,11 @@ public class RandomUtils
     return output;
   }
 
+  public static int GeneratePrice()
+  {
+    return Random.Range(0, 30);
+  }
+
   static char GenerateConsonant(bool capital = false)
   {
     string st;

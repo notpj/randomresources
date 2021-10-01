@@ -9,6 +9,7 @@ public class Resource : MonoBehaviour
   static List<Sprite> resourceSprites = new List<Sprite>();
   static List<string> resourceNames = new List<string>();
   static List<Color> resourceColors = new List<Color>();
+  static List<int> resourcePrices = new List<int>();
 
   public int value;
 
@@ -54,5 +55,6 @@ public class Resource : MonoBehaviour
     while (ID >= resourceSprites.Count) resourceSprites.Add(RandomUtils.GenerateImage());
     while (ID >= resourceNames.Count) resourceNames.Add(RandomUtils.GenerateName());
     while (ID >= resourceColors.Count) resourceColors.Add(RandomUtils.GenerateColor());
+    while (ID >= resourcePrices.Count) resourcePrices.Add(RandomUtils.GeneratePrice());
   }
 }
