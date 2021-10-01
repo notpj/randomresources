@@ -65,7 +65,7 @@ public class Recipe : MonoBehaviour
 
   private void UpdateResources()
   {
-    foreach(Resource r in resourcesNeeded) r.DisplayEmpty();
+    foreach (Resource r in resourcesNeeded) r.DisplayEmpty();
     for (int i = 0; i < componentsConsumed; ++i) resourcesNeeded[i].DisplayFilled();
     submitButton.SetActive(componentsConsumed >= componentsRequired);
     usesCounter.text = uses.ToString();
@@ -82,12 +82,12 @@ public class Recipe : MonoBehaviour
     resourcesNeeded.Clear();
     submitButton.SetActive(false);
 
-    uses = Random.Range(3, 8);
+    uses = Random.Range(1, 4);
 
-    componentIDRequired = Random.Range(1, PlayerController.GetComponentQuantity() + 2);
-    componentsRequired = Random.Range(2, 3 + 1);
+    componentIDRequired = Random.Range(1, PlayerController.GetComponentQuantity() + 1);
+    componentsRequired = Random.Range(1, 3 + 1);
 
-    for(int i = 0; i < componentsRequired; ++i)
+    for (int i = 0; i < componentsRequired; ++i)
     {
       Resource resource = Instantiate(ingredientPrefab, ingredientTransform).GetComponentInChildren<Resource>();
       resource.SetComponentID(componentIDRequired);
@@ -100,7 +100,7 @@ public class Recipe : MonoBehaviour
     }
     while (productIDGained == componentIDRequired);
 
-    productsGiven = Random.Range(1, 2 + 1);
+    productsGiven = Random.Range(1, 3 + 1);
 
     for (int i = 0; i < productsGiven; ++i)
     {

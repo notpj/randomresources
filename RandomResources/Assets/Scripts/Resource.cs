@@ -8,11 +8,9 @@ public class Resource : MonoBehaviour
 {
   static List<Sprite> resourceSprites = new List<Sprite>();
   static List<string> resourceNames = new List<string>();
+  static List<Color> resourceColors = new List<Color>();
 
   public int value;
-
-  // Test representations
-  public Color[] ComponentColors = new Color[9] { Color.green, Color.red, Color.blue, Color.yellow, Color.magenta, Color.black, Color.white, Color.cyan, Color.gray };
 
   [SerializeField]
   GameObject filledDisplay, emptyDisplay;
@@ -26,9 +24,9 @@ public class Resource : MonoBehaviour
   // visually sets this to represent this component
   public void SetComponentID(int id)
   {
-    outlineShape.Color = ComponentColors[id - 1];
-    backgroundShape.Color = ComponentColors[id - 1] * 0.8f;
     CheckResources(id - 1);
+    outlineShape.Color = resourceColors[id - 1];
+    backgroundShape.Color = resourceColors[id - 1] * 0.8f;
     icon.sprite = resourceSprites[id - 1];
     unlitIcon.sprite = resourceSprites[id - 1];
   }
@@ -55,5 +53,6 @@ public class Resource : MonoBehaviour
   {
     while (ID >= resourceSprites.Count) resourceSprites.Add(RandomUtils.GenerateImage());
     while (ID >= resourceNames.Count) resourceNames.Add(RandomUtils.GenerateName());
+    while (ID >= resourceColors.Count) resourceColors.Add(RandomUtils.GenerateColor());
   }
 }
