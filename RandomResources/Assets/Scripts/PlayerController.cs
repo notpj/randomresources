@@ -53,14 +53,16 @@ public class PlayerController : MonoBehaviour
         continue;
       }
 
+      Resource resource = pool.GetResource();
+
       if (pool.resourceType == ResourcePool.ResourceType.Component)
       {
         pool.CreateSome(Random.Range(2, 6));
-        pool.SetComponentID(componentCount++);
+        resource.SetComponentID(componentCount++);
       }
       else 
       {
-        pool.SetProductID(productCount++);
+        resource.SetProductID(productCount++);
       }
       
     }

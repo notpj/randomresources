@@ -7,9 +7,6 @@ using TMPro;
 
 public class ResourcePool : MonoBehaviour
 {
-  // Test representations
-  public Color[] ComponentColors = new Color[5] { Color.green,  Color.red, Color.blue, Color.yellow, Color.magenta };
-  public Color[] ProductColors = new Color[4] { Color.black,  Color.white, Color.cyan, Color.gray };
   public enum ResourceType
   {
     Component,
@@ -19,10 +16,11 @@ public class ResourcePool : MonoBehaviour
   [SerializeField]
   TextMeshProUGUI quantityDisplay;
   int quantity = 0;
-  int value;
 
   [SerializeField]
   ResourceType type = ResourceType.Component;
+
+  Resource resource;
 
   public ResourceType resourceType
   {
@@ -50,15 +48,14 @@ public class ResourcePool : MonoBehaviour
     UpdateDisplay();
   }
 
-  // visually sets this to represent this product
-  public void SetProductID(int id)
+  public Resource GetResource()
   {
-    GetComponentInChildren<Image>().color = ProductColors[id];
+    return resource;
   }
-  // visually sets this to represent this component
-  public void SetComponentID(int id)
+
+  private void Awake()
   {
-    GetComponentInChildren<Image>().color = ComponentColors[id];
+    resource = GetComponentInChildren<Resource>();
   }
 
   private void Start()
