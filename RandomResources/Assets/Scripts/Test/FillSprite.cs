@@ -21,6 +21,6 @@ public class FillSprite : MonoBehaviour
   private void RefreshSprite()
   {
     if (GetComponent<Image>()) mySprite = GetComponent<Image>();
-    mySprite.sprite = RandomUtils.GenerateImage();
+    mySprite.sprite = ActionWallet.ActionIcon;
   }
 }

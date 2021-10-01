@@ -21,7 +21,7 @@ public class ActionWallet : MonoBehaviour
   private static ActionWallet instance;
 
   public static Sprite ActionIcon;
-
+  public static int MaxActions = 24;
   [SerializeField]
   TextMeshProUGUI actionCounter;
   [SerializeField]
@@ -39,7 +39,7 @@ public class ActionWallet : MonoBehaviour
 
   public static void RefreshActions()
   {
-    Instance.actionsRemaining = 10;
+    Instance.actionsRemaining = MaxActions;
     Instance.UpdateDisplay();
   }
 
@@ -48,6 +48,7 @@ public class ActionWallet : MonoBehaviour
   private void Awake()
   {
     Instance = this;
+    RefreshActions();
   }
 
   void UpdateDisplay()
