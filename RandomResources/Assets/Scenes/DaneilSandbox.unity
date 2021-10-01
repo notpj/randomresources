@@ -730,7 +730,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -784,14 +784,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1594325145773295969, guid: 5f80d402abf20b94ea238a61aa8d2e61, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 123.99994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594325145773295969, guid: 5f80d402abf20b94ea238a61aa8d2e61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1843323826975341066, guid: 5f80d402abf20b94ea238a61aa8d2e61, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1934927382}
-    - target: {fileID: 1843323826975341066, guid: 5f80d402abf20b94ea238a61aa8d2e61, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1843323827658936884, guid: 5f80d402abf20b94ea238a61aa8d2e61, type: 3}
       propertyPath: m_Name
       value: Player

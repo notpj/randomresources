@@ -9,18 +9,13 @@ public class RandomUtils
   {
     string output = "";
 
-    int rand = Random.Range(2, 9);
+    int rand = Random.Range(2, 5);
 
     for (int i = 0; i <= rand; ++i)
     {
-      if (i % 2 == 0)
-      {
-        output += GenerateConsonant();
-      }
-      else if (i % 2 == 1)
-      {
-        output += GenerateVowel();
-      }
+      if (i == 0) output += GenerateConsonant(true);
+      else if (i % 2 == 0) output += GenerateConsonant();
+      else if (i % 2 == 1) output += GenerateVowel();
     }
 
     return output;
@@ -49,16 +44,24 @@ public class RandomUtils
     return output;
   }
 
-  static char GenerateConsonant()
+  static char GenerateConsonant(bool capital = false)
   {
-    string st = "bcdfghjklmnpqrstvwxyz";
+    string st;
+
+    if (capital) st = "BCDFGHJKLMNPQRSTVWXYZ";
+    else st = "bcdfghjklmnpqrstvwxyz";
+
     char c = st[Random.Range(0, st.Length)];
     return c;
   }
 
-  static char GenerateVowel()
+  static char GenerateVowel(bool capital = false)
   {
-    string st = "aeiou";
+    string st;
+
+    if (capital) st = "AEIOU";
+    else st = "aeiou";
+
     char c = st[Random.Range(0, st.Length)];
     return c;
   }
