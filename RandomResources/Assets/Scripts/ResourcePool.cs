@@ -8,7 +8,7 @@ using TMPro;
 public class ResourcePool : MonoBehaviour
 {
   [SerializeField]
-  TextMeshProUGUI quantityDisplay;
+  TextMeshProUGUI quantityDisplay, resourceName;
   int quantity = 0;
 
   int tier;
@@ -36,6 +36,11 @@ public class ResourcePool : MonoBehaviour
   public Resource GetResource()
   {
     return resource;
+  }
+
+  public void UpdateName(int ID)
+  {
+    resourceName.text = Resource.GetName(ID);
   }
 
   private void Awake()

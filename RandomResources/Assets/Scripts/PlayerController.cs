@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
       componentPools.Add(pool);
       pool.CreateSome(Random.Range(2, 6));
       resource.SetComponentID(++componentCount);
-      
+      pool.UpdateName(componentCount);
     }
   }
 }
