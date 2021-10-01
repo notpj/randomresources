@@ -21,9 +21,41 @@ public class RandomUtils
     return output;
   }
 
+  public static string GenerateLongName()
+  {
+    string output = "";
+
+    int rand = Random.Range(5, 8);
+
+    for (int i = 0; i <= rand; ++i)
+    {
+      if (i == 0) output += GenerateConsonant(true);
+      else if (i % 2 == 0) output += GenerateConsonant();
+      else if (i % 2 == 1) output += GenerateVowel();
+    }
+
+    return output;
+  }
+
+  public static string GenerateShortName()
+  {
+    string output = "";
+
+    int rand = Random.Range(2, 4);
+
+    for (int i = 0; i <= rand; ++i)
+    {
+      if (i == 0) output += GenerateConsonant(true);
+      else if (i % 2 == 0) output += GenerateConsonant();
+      else if (i % 2 == 1) output += GenerateVowel();
+    }
+
+    return output;
+  }
+
   public static string GenerateMachine()
   {
-    string[] machines = 
+    string[] machines =
     {
       "Slicer", "Pounder", "Clumper", "Dicer", "Juicer", "Clipper", "Snipper", "Ripper",
       "Eater", "Peeler", "Grabber", "Placer", "Dumper", "Thumper", "Jumper", "Mixer",
