@@ -74,6 +74,7 @@ public class Recipe : MonoBehaviour
 
   private void RemoveRecipe()
   {
+    transform.parent = null;
     Destroy(gameObject);
     if (Event_RecipeRemoved != null) Event_RecipeRemoved();
   }
