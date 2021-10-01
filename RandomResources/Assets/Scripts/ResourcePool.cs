@@ -7,28 +7,13 @@ using TMPro;
 
 public class ResourcePool : MonoBehaviour
 {
-  public enum ResourceType
-  {
-    Component,
-    Product
-  }
-  
   [SerializeField]
   TextMeshProUGUI quantityDisplay;
   int quantity = 0;
 
-  [SerializeField]
-  ResourceType type = ResourceType.Component;
+  int tier;
 
   Resource resource;
-
-  public ResourceType resourceType
-  {
-    get 
-    {
-      return type;
-    }
-  }
 
   public bool TakeSome(int amount = 1)
   {

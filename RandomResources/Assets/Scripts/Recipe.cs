@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Recipe : MonoBehaviour
 {
   [SerializeField]
-  GameObject ingredientPrefab, resultPrefab;
+  GameObject submitButton;
+
+  [SerializeField]
+  GameObject ingredientPrefab;
   [SerializeField]
   Transform ingredientTransform, resultTransform;
+
+  [SerializeField]
+  TextMeshProUGUI usesCounter;
 
   List<Resource> resourcesNeeded = new List<Resource>();
 
@@ -30,8 +37,6 @@ public class Recipe : MonoBehaviour
     }
 
     UpdateResources();
-
-    if (componentsConsumed >= componentsRequired) EnableTransaction();
   }
 
   public void ReturnResource()
@@ -46,19 +51,24 @@ public class Recipe : MonoBehaviour
   public void CompleteTransaction()
   {
     componentsConsumed = 0;
-    PlayerController.AwardProducts(productIDGained, productsGiven);
+    PlayerController.AwardComponents(productIDGained, productsGiven);
+    --uses;
     UpdateResources();
+
+    if (uses <= 0) RemoveRecipe();
   }
 
-  private void EnableTransaction()
+  private void RemoveRecipe()
   {
-
+    Destroy(gameObject);
   }
 
   private void UpdateResources()
   {
     foreach(Resource r in resourcesNeeded) r.DisplayEmpty();
     for (int i = 0; i < componentsConsumed; ++i) resourcesNeeded[i].DisplayFilled();
+    submitButton.SetActive(componentsConsumed >= componentsRequired);
+    usesCounter.text = uses.ToString();
   }
 
   private void Start()
@@ -70,6 +80,9 @@ public class Recipe : MonoBehaviour
   {
     componentsConsumed = 0;
     resourcesNeeded.Clear();
+    submitButton.SetActive(false);
+
+    uses = Random.Range(5, 15);
 
     componentIDRequired = Random.Range(1, PlayerController.GetComponentQuantity() + 1);
     componentsRequired = Random.Range(2, 3 + 1);
@@ -81,14 +94,16 @@ public class Recipe : MonoBehaviour
       resourcesNeeded.Add(resource);
     }
 
-    productIDGained = Random.Range(1, PlayerController.GetProductQuantity() + 1);
+    productIDGained = Random.Range(1, PlayerController.GetComponentQuantity() + 1);
     productsGiven = Random.Range(1, 2 + 1);
 
     for (int i = 0; i < productsGiven; ++i)
     {
-      Resource resource = Instantiate(resultPrefab, resultTransform).GetComponentInChildren<Resource>();
-      resource.SetProductID(productIDGained);
+      Resource resource = Instantiate(ingredientPrefab, resultTransform).GetComponentInChildren<Resource>();
+      resource.SetComponentID(productIDGained);
       resource.DisplayFilled();
     }
+
+    UpdateResources();
   }
 }
