@@ -24,8 +24,34 @@ public class PlayerController : MonoBehaviour
   [SerializeField, Tooltip("All of the resource pools that the player has control of are a child of this")]
   GameObject resourcePoolParent = null;
 
+  List<ResourcePool> componentPools = new List<ResourcePool>();
+  List<ResourcePool> productPools = new List<ResourcePool>();
+
   int componentCount = 0;
   int productCount = 0;
+
+  static public bool TakeComponentIfAvailable(int componentID)
+  {
+    ResourcePool pool = Instance.componentPools[componentID - 1];
+    return pool.TakeSome();
+  }
+
+  static public void AwardComponents(int componentID, int amount)
+  {
+    ResourcePool pool = Instance.componentPools[componentID - 1];
+    pool.CreateSome(amount);
+  }
+  static public bool TakeProductIfAvailable(int componentID)
+  {
+    ResourcePool pool = Instance.productPools[componentID - 1];
+    return pool.TakeSome();
+  }
+
+  static public void AwardProducts(int componentID, int amount)
+  {
+    ResourcePool pool = Instance.productPools[componentID - 1];
+    pool.CreateSome(amount);
+  }
 
   static public int GetComponentQuantity()
   {
@@ -54,15 +80,18 @@ public class PlayerController : MonoBehaviour
       }
 
       Resource resource = pool.GetResource();
+      resource.DisplayFilled();
 
       if (pool.resourceType == ResourcePool.ResourceType.Component)
       {
+        componentPools.Add(pool);
         pool.CreateSome(Random.Range(2, 6));
-        resource.SetComponentID(componentCount++);
+        resource.SetComponentID(++componentCount);
       }
       else 
       {
-        resource.SetProductID(productCount++);
+        productPools.Add(pool);
+        resource.SetProductID(++productCount);
       }
       
     }
