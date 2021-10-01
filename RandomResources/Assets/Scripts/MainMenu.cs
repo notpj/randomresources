@@ -30,6 +30,8 @@ public class MainMenu : MonoBehaviour
     Brief.color = Color.green;
     Marathon.color = Color.white;
     Intro.text = "12";
+    ShortGame = true;
+    if (!Enter.activeSelf) Enter.SetActive(true);
   }
 
   public void SelectMarathon()
@@ -37,6 +39,8 @@ public class MainMenu : MonoBehaviour
     Brief.color = Color.white;
     Marathon.color = Color.green;
     Intro.text = "24";
+    ShortGame = false;
+    if (!Enter.activeSelf) Enter.SetActive(true);
   }
 
   public void LoadGame()
