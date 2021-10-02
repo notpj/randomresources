@@ -59,7 +59,7 @@ public class RandomUtils
     return output;
   }
 
-  public static string GenerateMachine()
+  public static (string, string) GenerateMachine()
   {
     string[] machines =
     {
@@ -69,8 +69,18 @@ public class RandomUtils
       "Mincer", "Finder", "Storer", "Pourer", "Gripper", "Tipper", "Folder", "Holder",
       "Blaster", "Master", "Tool", "Machine", "Box", "Bucket", "Cache", "Chest"
     };
+    string[] actions =
+    {
+      "Slice!", "Pound!", "Clump!", "Dice!", "Juice!", "Clip!", "Snip!", "Rip!",
+      "Eat!", "Peel!", "Grab!", "Place!", "Dump!", "Thump!", "Jump!", "Mix!",
+      "Chunk!", "Fix!", "Dip!", "Spread!", "Dust!", "Suck!", "Throw!", "Catch!",
+      "Mince!", "Find!", "Store!", "Pour!", "Grip!", "Tip!", "Fold!", "Hold!",
+      "Blast!", "Learn!", "Work!", "Operate!", "Store!", "Fill!", "Stash!", "Protect!"
+    };
 
-    return machines[Random.Range(0, machines.Length)];
+    int index = Random.Range(0, machines.Length);
+
+    return (machines[index], actions[index]);
   }
 
   public static Sprite GenerateImage()

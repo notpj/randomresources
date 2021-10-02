@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Recipe : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Recipe : MonoBehaviour
   static public event VoidVoid Event_RecipeRemoved;
 
   [SerializeField]
-  GameObject submitButton;
+  Button submitButton;
 
   [SerializeField]
   GameObject ingredientPrefab;
@@ -17,7 +18,7 @@ public class Recipe : MonoBehaviour
   Transform ingredientTransform, resultTransform;
 
   [SerializeField]
-  TextMeshProUGUI usesCounter, toolName;
+  TextMeshProUGUI usesCounter, toolName, confirmText;
 
   List<Resource> resourcesNeeded = new List<Resource>();
 
@@ -74,7 +75,7 @@ public class Recipe : MonoBehaviour
 
   private void RemoveRecipe()
   {
-    transform.parent = null;
+    transform.SetParent(null, false);
     Destroy(gameObject);
     if (Event_RecipeRemoved != null) Event_RecipeRemoved();
   }
@@ -83,7 +84,7 @@ public class Recipe : MonoBehaviour
   {
     foreach (Resource r in resourcesNeeded) r.DisplayEmpty();
     for (int i = 0; i < componentsConsumed; ++i) resourcesNeeded[i].DisplayFilled();
-    submitButton.SetActive(componentsConsumed >= componentsRequired);
+    submitButton.interactable = (componentsConsumed >= componentsRequired);
     usesCounter.text = uses.ToString();
   }
 
@@ -96,7 +97,7 @@ public class Recipe : MonoBehaviour
   {
     componentsConsumed = 0;
     resourcesNeeded.Clear();
-    submitButton.SetActive(false);
+    submitButton.interactable = (false);
 
     uses = Random.Range(1, 4);
 
@@ -127,6 +128,9 @@ public class Recipe : MonoBehaviour
 
     UpdateResources();
 
-    toolName.text = Resource.GetName(componentIDRequired) + ' ' + RandomUtils.GenerateMachine();
+    (string, string) machineAction = RandomUtils.GenerateMachine();
+
+    toolName.text = Resource.GetName(componentIDRequired) + ' ' + machineAction.Item1;
+    confirmText.text = machineAction.Item2;
   }
 }

@@ -17,7 +17,7 @@ public class Resource : MonoBehaviour
   GameObject filledDisplay, emptyDisplay;
 
   [SerializeField]
-  ShapeRenderer outlineShape, backgroundShape;
+  ShapeRenderer outlineShape, outlineshape2, backgroundShape;
 
   [SerializeField]
   Image icon, unlitIcon;
@@ -34,10 +34,12 @@ public class Resource : MonoBehaviour
   public void SetComponentID(int id)
   {
     CheckResources(id - 1);
+    //outlineshape2.Color = resourceColors[id - 1];
     outlineShape.Color = resourceColors[id - 1];
     backgroundShape.Color = resourceColors[id - 1] * 0.8f;
     icon.sprite = resourceSprites[id - 1];
     unlitIcon.sprite = resourceSprites[id - 1];
+    //unlitIcon.color = resourceColors[id - 1];
   }
 
   public static string GetName(int ID)

@@ -15,12 +15,15 @@ public class ResourcePool : MonoBehaviour
 
   Resource resource;
 
+  Vector3 defaultScale;
+
   public bool TakeSome(int amount = 1)
   {
     if (quantity - amount >= 0)
     {
       quantity -= amount;
       UpdateDisplay();
+      Interact();
       return true;
     }
 
@@ -31,6 +34,7 @@ public class ResourcePool : MonoBehaviour
   {
     quantity += amount;
     UpdateDisplay();
+    Interact();
   }
 
   public Resource GetResource()
@@ -45,6 +49,7 @@ public class ResourcePool : MonoBehaviour
 
   private void Awake()
   {
+    defaultScale = transform.localScale;
     resource = GetComponentInChildren<Resource>();
   }
 
@@ -56,5 +61,26 @@ public class ResourcePool : MonoBehaviour
   void UpdateDisplay()
   {
     quantityDisplay.text = quantity.ToString();
+  }
+
+  void Interact()
+  {
+    StopAllCoroutines();
+    StartCoroutine(AnimateInteraction());
+  }
+
+  IEnumerator AnimateInteraction()
+  {
+    Vector3 bigScale = defaultScale * 1.3f;
+    transform.localScale = bigScale;
+
+    int frames = 60;
+    for(int i = 0; i < frames; ++i)
+    {
+      transform.localScale = Vector3.Lerp(defaultScale, bigScale, 1.0f - (i / (float)frames));
+      yield return new WaitForEndOfFrame();
+    }
+
+    transform.localScale = defaultScale;
   }
 }

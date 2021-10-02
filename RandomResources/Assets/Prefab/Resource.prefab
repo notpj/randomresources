@@ -872,15 +872,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  ComponentColors:
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
   filledDisplay: {fileID: 326137598418517621}
   emptyDisplay: {fileID: 7481087142294397936}
   outlineShape: {fileID: 7955375223610052476}
+  outlineshape2: {fileID: 2700690208204104464}
   backgroundShape: {fileID: 1165490251425528410}
   icon: {fileID: 2888581321378802039}
   unlitIcon: {fileID: 4411673989202951054}
