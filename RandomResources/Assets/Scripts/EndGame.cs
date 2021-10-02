@@ -5,20 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
-  // Start is called before the first frame update
-  void Start()
+  [SerializeField]
+  GameObject endGameCanvas;
+
+  IEnumerator TransitionToScore()
   {
-
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-
+    yield return new WaitForSecondsRealtime(1.0f);
+    SceneManager.LoadScene(2);
   }
 
   private void OnEnable()
   {
+    endGameCanvas.SetActive(false);
     ActionWallet.Event_ActionsDepleted += GameOver;
   }
 
@@ -29,6 +27,7 @@ public class EndGame : MonoBehaviour
 
   private void GameOver()
   {
-    SceneManager.LoadScene(2);
+    endGameCanvas.SetActive(true);
+    StartCoroutine(TransitionToScore());
   }
 }
