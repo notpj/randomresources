@@ -40,12 +40,19 @@ public class Resource : MonoBehaviour
     icon.sprite = resourceSprites[id - 1];
     unlitIcon.sprite = resourceSprites[id - 1];
     //unlitIcon.color = resourceColors[id - 1];
+    value = resourcePrices[id - 1];
   }
 
   public static string GetName(int ID)
   {
     CheckResources(ID - 1);
     return resourceNames[ID - 1];
+  }
+
+  public static int GetValue(int ID)
+  {
+    CheckResources(ID - 1);
+    return resourcePrices[ID - 1];
   }
 
   public void DisplayEmpty()

@@ -8,7 +8,7 @@ using TMPro;
 public class ResourcePool : MonoBehaviour
 {
   [SerializeField]
-  TextMeshProUGUI quantityDisplay, resourceName;
+  TextMeshProUGUI quantityDisplay, resourceName /*resourceValue*/;
   int quantity = 0;
 
   int tier;
@@ -47,6 +47,11 @@ public class ResourcePool : MonoBehaviour
     resourceName.text = Resource.GetName(ID);
   }
 
+  public void UpdatePrice(int ID)
+  {
+    //resourceValue.text = Resource.GetValue(ID).ToString();
+  }
+
   private void Awake()
   {
     defaultScale = transform.localScale;
@@ -75,7 +80,7 @@ public class ResourcePool : MonoBehaviour
     transform.localScale = bigScale;
 
     int frames = 60;
-    for(int i = 0; i < frames; ++i)
+    for (int i = 0; i < frames; ++i)
     {
       transform.localScale = Vector3.Lerp(defaultScale, bigScale, 1.0f - (i / (float)frames));
       yield return new WaitForEndOfFrame();

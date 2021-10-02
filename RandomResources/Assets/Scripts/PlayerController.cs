@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
   static private PlayerController Instance
   {
-    get 
+    get
     {
       if (!instance) Debug.LogError("Instance of player controller does not exist or was not awake");
       return instance;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
   private void Start()
   {
     foreach (Transform T in resourcePoolParent.transform) Destroy(T.gameObject);
-    for(int i = 0; i < startingPools; ++i)
+    for (int i = 0; i < startingPools; ++i)
     {
       ResourcePool pool = AddResourcePool();
       pool.CreateSome(Random.Range(2, 6));
@@ -85,5 +85,6 @@ public class PlayerController : MonoBehaviour
     componentPools.Add(pool);
     resource.SetComponentID(++componentCount);
     pool.UpdateName(componentCount);
+    pool.UpdatePrice(componentCount);
   }
 }

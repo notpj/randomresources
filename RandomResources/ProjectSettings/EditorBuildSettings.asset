@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DaneilSandbox.unity
     guid: 92d11f0f11f242a44855702e88e2cc10
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 3b22f2715007a2d42b7cdb2ad82ec8ad
   m_configObjects: {}
