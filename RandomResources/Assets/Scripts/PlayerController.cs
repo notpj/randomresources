@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
   GameObject resourcePoolParent = null;
   [SerializeField]
   GameObject resourcePoolPrefab = null;
-  [SerializeField]
-  int startingPools = 3;
+  
+  static public int startingPools = 3;
 
   List<ResourcePool> componentPools = new List<ResourcePool>();
 

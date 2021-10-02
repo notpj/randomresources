@@ -36,6 +36,7 @@ public class MainMenu : MonoBehaviour
     ActionWallet.MaxActions = 12;
     Intro.text = "12";
     ShortGame = true;
+    PlayerController.startingPools = 6;
     if (!Enter.activeSelf) Enter.SetActive(true);
   }
 
@@ -46,6 +47,7 @@ public class MainMenu : MonoBehaviour
     ActionWallet.MaxActions = 24;
     Intro.text = "24";
     ShortGame = false;
+    PlayerController.startingPools = 3;
     if (!Enter.activeSelf) Enter.SetActive(true);
   }
 

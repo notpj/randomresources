@@ -10,6 +10,7 @@ static public class GameController
     RandomUtils.ResetRandom();
     Resource.ResetResources();
     ActionWallet.ActionIcon = null;
+    ActionWallet.CurrencyIcon = null;
 
     ChooseStartupSymbols();
   }

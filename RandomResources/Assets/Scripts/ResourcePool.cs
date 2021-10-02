@@ -75,7 +75,7 @@ public class ResourcePool : MonoBehaviour
     quantityDisplay.text = quantity.ToString();
   }
 
-  void Interact()
+  public void Interact()
   {
     StopAllCoroutines();
     StartCoroutine(AnimateInteraction());
