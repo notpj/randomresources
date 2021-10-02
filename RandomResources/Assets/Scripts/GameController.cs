@@ -4,6 +4,7 @@ using UnityEngine;
 
 static public class GameController
 {
+  static public List<int> lastHighScore;
   static public void ResetGame()
   {
     RandomUtils.ResetRandom();

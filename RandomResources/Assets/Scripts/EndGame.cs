@@ -27,6 +27,7 @@ public class EndGame : MonoBehaviour
 
   private void GameOver()
   {
+    GameController.lastHighScore = PlayerController.GetResourceCounts();
     endGameCanvas.SetActive(true);
     StartCoroutine(TransitionToScore());
   }

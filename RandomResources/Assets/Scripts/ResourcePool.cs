@@ -18,6 +18,11 @@ public class ResourcePool : MonoBehaviour
 
   Vector3 defaultScale;
 
+  public int GetQuantity()
+  {
+    return quantity;
+  }
+
   public bool TakeSome(int amount = 1)
   {
     if (quantity - amount >= 0)

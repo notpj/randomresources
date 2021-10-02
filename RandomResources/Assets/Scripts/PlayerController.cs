@@ -32,6 +32,18 @@ public class PlayerController : MonoBehaviour
 
   int componentCount = 0;
 
+  static public List<int> GetResourceCounts()
+  {
+    List<int> quantities = new List<int>();
+
+    foreach(ResourcePool pool in Instance.componentPools)
+    {
+      quantities.Add(pool.GetQuantity()); 
+    }
+
+    return quantities;
+  }
+
   static public bool TakeComponentIfAvailable(int componentID)
   {
     ResourcePool pool = Instance.componentPools[componentID - 1];

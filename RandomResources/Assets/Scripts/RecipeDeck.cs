@@ -16,6 +16,7 @@ public class RecipeDeck : MonoBehaviour
 
   private void Start()
   {
+    //foreach (Transform t in recipeParent) Destroy(t.parent);
     FillCards();
     //StartCoroutine(DealCards());
   }
