@@ -8,7 +8,8 @@ using TMPro;
 public class ResourcePool : MonoBehaviour
 {
   [SerializeField]
-  TextMeshProUGUI quantityDisplay, resourceName /*resourceValue*/;
+  TextMeshProUGUI quantityDisplay, resourceName, resourceValue;
+  public Image CurrencyImage;
   int quantity = 0;
 
   int tier;
@@ -49,7 +50,8 @@ public class ResourcePool : MonoBehaviour
 
   public void UpdatePrice(int ID)
   {
-    //resourceValue.text = Resource.GetValue(ID).ToString();
+    resourceValue.text = Resource.GetValue(ID).ToString();
+    CurrencyImage.sprite = ActionWallet.CurrencyIcon;
   }
 
   private void Awake()
