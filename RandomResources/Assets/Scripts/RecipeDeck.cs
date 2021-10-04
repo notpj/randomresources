@@ -32,7 +32,7 @@ public class RecipeDeck : MonoBehaviour
 
   private void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space)) CreateCard();
+    //if (Input.GetKeyDown(KeyCode.Space)) CreateCard();
   }
 
   private void FillCards()
