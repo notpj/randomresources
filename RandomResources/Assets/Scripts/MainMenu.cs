@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
 
   public void SelectBrief()
   {
+    FindObjectOfType<AudioManager>().PlayClick1();
     Brief.color = Color.green;
     Marathon.color = Color.white;
     ActionWallet.MaxActions = 12;
@@ -42,6 +43,7 @@ public class MainMenu : MonoBehaviour
 
   public void SelectMarathon()
   {
+    FindObjectOfType<AudioManager>().PlayClick1();
     Brief.color = Color.white;
     Marathon.color = Color.green;
     ActionWallet.MaxActions = 24;
@@ -53,6 +55,7 @@ public class MainMenu : MonoBehaviour
 
   public void LoadGame()
   {
+    FindObjectOfType<AudioManager>().PlayClick3();
     if (ShortGame) SceneManager.LoadScene(1);
     else SceneManager.LoadScene(1);
   }

@@ -49,6 +49,9 @@ public class Recipe : MonoBehaviour
 
     PlayerController.AwardComponents(componentIDRequired, 1);
     --componentsConsumed;
+
+    FindObjectOfType<AudioManager>().PlayClick2();
+
     UpdateResources();
   }
 
@@ -57,6 +60,9 @@ public class Recipe : MonoBehaviour
     componentsConsumed = 0;
     PlayerController.AwardComponents(productIDGained, productsGiven);
     --uses;
+
+    FindObjectOfType<AudioManager>().PlayClick3();
+
     UpdateResources();
     ActionWallet.UseAction();
     if (uses <= 0) RemoveRecipe();
@@ -69,6 +75,9 @@ public class Recipe : MonoBehaviour
       PlayerController.AwardComponents(componentIDRequired, 1);
       --componentsConsumed;
     }
+
+    FindObjectOfType<AudioManager>().PlayClick2();
+
     ActionWallet.UseAction();
     RemoveRecipe();
   }

@@ -85,6 +85,7 @@ public class ResourcePool : MonoBehaviour
   {
     Vector3 bigScale = defaultScale * 1.3f;
     transform.localScale = bigScale;
+    FindObjectOfType<AudioManager>().PlayClick1();
 
     int frames = 60;
     for (int i = 0; i < frames; ++i)
